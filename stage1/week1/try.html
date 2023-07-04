@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .desktop-menu {
+            display: block;
+        }
+        .mobile-menu {
+            display: none;
+        }
+        @media (max-width: 900px) {
+            .desktop-menu {
+                display: none;
+            }
+            .mobile-menu {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="desktop-menu">選項一、選項二、選項三</div>
+    <div class="mobile-menu">
+        <img src="./menu.png" width="30" height="30" />
+    </div>
+</body>
+</html>
