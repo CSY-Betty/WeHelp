@@ -1,11 +1,16 @@
 span {
     font-size: 20px;
 }
+body {
+    margin: 0; padding: 0;
+}
+
 .top {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    margin: 0 20px 0 20px;
 }
 
 .menu-list {
@@ -39,7 +44,7 @@ span {
 }
 
 .container {
-    /width: 1200px;
+    width: 1200px;
     margin: 0 auto;
 }
 
@@ -148,7 +153,9 @@ span {
     .mobile-menu {
         display: block;
     }
-
+    .banner-text {
+        text-align: center;
+    }
     .container {
         width: 90%;
         margin: 0 auto;
@@ -174,7 +181,6 @@ span {
     .title-item {
         width: 100%;
         height: 320px;
-        /margin-bottom: 20px;
         margin-right: 0px;
         background-color: #eaeaea;
     }
