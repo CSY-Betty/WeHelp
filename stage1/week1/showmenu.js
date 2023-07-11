@@ -1,7 +1,7 @@
 function showmenu(elem){
     let menumobile = document.getElementById('menumobile');
     elem.style.display = 'none';
-    menumobile.style.display = 'block';
+    menumobile.style.display = 'inline-block';
 }
 
 function hidemenu(elem){
