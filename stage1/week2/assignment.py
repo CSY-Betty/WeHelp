@@ -142,3 +142,25 @@ def get_number(index):
 get_number(1)  # print 4
 get_number(5)  # print 10
 get_number(10)  # print 15
+
+
+print("===== Task 5 =====")
+
+
+def find_index_of_car(seats, status, number):
+    # your code here
+    closest_seats = float("inf")
+    train_index = -1
+    for i in range(len(seats)):
+        if status[i] == 1:
+            min = seats[i] - number
+            if min >= 0 and min < closest_seats:
+                closest_seats = min
+                train_index = i
+
+    print(train_index)
+
+
+find_index_of_car([3, 1, 5, 4, 2], [0, 1, 0, 1, 1], 2)  # print 4
+find_index_of_car([1, 0, 5, 1, 3], [0, 1, 0, 1, 1], 4)  # print -1
+find_index_of_car([4, 6, 5, 8], [0, 1, 1, 1], 4)  # print 2

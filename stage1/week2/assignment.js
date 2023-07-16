@@ -163,3 +163,27 @@ function getNumber(index) {
 getNumber(1); // print 4
 getNumber(5); // print 10
 getNumber(10); // print 15
+
+console.log("===== Task 5 =====")
+
+function findIndexOfCar(seats, status, number){
+    // your code here
+    let closestSeats = Infinity;
+    let trainIndex = -1;
+  
+    for (i = 0; i < seats.length; i++) {
+        if (status[i] === 1) {
+        let min = seats[i] - number;
+            if (min >= 0 && min < closestSeats) {
+                closestSeats = min;
+                trainIndex = i;
+                }   
+        }   
+    }
+    console.log(trainIndex);
+}
+
+
+findIndexOfCar([3, 1, 5, 4, 2], [0, 1, 0, 1, 1], 2); // print 4 
+findIndexOfCar([1, 0, 5, 1, 3], [0, 1, 0, 1, 1], 4); // print -1 
+findIndexOfCar([4, 6, 5, 8], [0, 1, 1, 1], 4); // print 2
