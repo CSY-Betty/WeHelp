@@ -1,12 +1,20 @@
 // 建立照片模板
 function createAndAppendElementPic(tag, className, src, container) {
-    const element = document.createElement(tag);
-    element.classList.add(className);    
-    const img = document.createElement("img");
-    img.src = src;
-    element.appendChild(img);
+    if (tag.toLowerCase() === "img") {
+        const element = document.createElement(tag);
+        element.classList.add(className);
+        element.src = src;
+        container.appendChild(element);
+    }
+    else {
+        const element = document.createElement(tag);
+        element.classList.add(className);  
+        const img = document.createElement("img");
+        img.src = src;
+        element.appendChild(img);
     
-    container.appendChild(element)
+        container.appendChild(element)
+    }
 }
 
 // 建立景點名稱模板
@@ -43,7 +51,7 @@ function processDataAndDisplay(data, isProduct){
             titleItem.classList.add("title-item");
 
             createAndAppendElementPic("div", "attractionPic", first_image, titleItem)
-            createAndAppendElementPic("div", "star", "./star.png", titleItem)
+            createAndAppendElementPic("img", "star", "./star.png", titleItem)
             createAndAppendElementText("div", "attractionName", stitle, titleItem)
             
 

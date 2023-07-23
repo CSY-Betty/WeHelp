@@ -206,7 +206,7 @@ article {
     object-fit: cover;
 }
 
-.star img{
+.title-item .star {
     width: 15%;
     position: absolute;
     top: 10px;
