@@ -206,7 +206,7 @@ article {
     object-fit: cover;
 }
 
-.star {
+.star img{
     width: 15%;
     position: absolute;
     top: 10px;
@@ -230,7 +230,7 @@ article {
         width: 90%;
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
+        justify-content: flex-start;
         margin: 20px auto;
     }
 
@@ -272,4 +272,21 @@ article {
     .title-item .attractionName {
     height: 20%;
     }
+}
+
+/* Load More
+------------------- */
+.button-container {
+    display: flex;
+    justify-content: center; /* 水平置中 */
+  }
+
+#load-more{
+    width: 150px;
+    margin-bottom: 20px;
+    padding: 10px 30px;
+    border: 1px solid #334;
+    color: #334;
+    font-size: 16px;
+    background-color: #fff;
 }
