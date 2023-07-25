@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>{% block title %}{% endblock %}</title>
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="https://unpkg.com/ress/dist/ress.min.css"
+		/>
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="{{ url_for('static', filename='base.css') }}"
+		/>
+		{% block link %}{% endblock %}
+	</head>
+	<body>
+		<header>
+			<div class="title">
+				<span>{% block header %}{% endblock %}</span>
+			</div>
+		</header>
+		{% block article %}{% endblock %}
+	</body>
+</html>
