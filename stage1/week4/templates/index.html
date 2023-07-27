@@ -23,7 +23,7 @@ block article %}
 	</form>
 	<hr />
 	<span>計算正整數的平方</span>
-	<form action="/calculate" form="GET" name="calculate">
+	<form action="/square/<int:positive>" method="POST" name="calculate">
 		<label
 			>正整數
 			<input type="text" name="positive" />
