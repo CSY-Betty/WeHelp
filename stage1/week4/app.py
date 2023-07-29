@@ -44,14 +44,9 @@ def error():
     return render_template("error.html", message=message)
 
 
-@app.route("/calculate")
-def calc():
-    positive = int(request.args.get("positive"))
-    return redirect(url_for("result", positive=positive))
-
-
-@app.route("/square/<int:positive>")
+@app.route("/square/<int:positive>", methods=["POST"])
 def result(positive):
+    positive = int(request.form["positive"])
     result = positive**2
     return render_template("square.html", result=result)
 

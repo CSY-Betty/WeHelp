@@ -21,11 +21,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // 判斷是否為正整數
     if (isPositiveInteger(inputValue)) {
-    calculateForm.setAttribute("action", "/calculate");
-    calculateForm.submit();
-    }
-    else {
-    alert("Please enter a positive number.");
+        calculateForm.setAttribute("action", `/square/${inputValue}`);
+        calculateForm.method = "POST";
+        calculateForm.submit();
+    } else {
+        alert("Please enter a positive number.");
     }
     });
 }) 
