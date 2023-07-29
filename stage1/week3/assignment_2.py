@@ -1,5 +1,8 @@
 import urllib.request as req
 from bs4 import BeautifulSoup
+import time
+
+start = time.time()
 
 # 最新頁
 new_url = "https://www.ptt.cc/bbs/movie/index.html"
@@ -32,7 +35,7 @@ def get_tweet(tweet):
 
 def get_article_time(title):
     link = title.find("a")
-    time = None
+    article_time = None
 
     if link is None:
         pass
@@ -40,9 +43,9 @@ def get_article_time(title):
         article_url = "https://www.ptt.cc" + link["href"]
         article_meta = get_data(article_url).find_all("div", class_="article-metaline")
         target_div = article_meta[2] if len(article_meta) >= 3 else ""
-        time = target_div.find("span", class_="article-meta-value")
+        article_time = target_div.find("span", class_="article-meta-value")
 
-    return time
+    return article_time
 
 
 def crawl_page(url):
@@ -55,10 +58,10 @@ def crawl_page(url):
         if title_text == "[公告] 電影板板規 2022/12/5":
             continue  # 不將[公告] 電影板板規加入資料
         tweet_num = get_tweet(tweet)
-        time = get_article_time(title)
+        article_time = get_article_time(title)
 
         if time is not None:
-            page_data.append((title_text, tweet_num, time.string))
+            page_data.append((title_text, tweet_num, article_time.string))
 
     return page_data
 
@@ -82,6 +85,9 @@ sorted_data = sorted(latest_data, key=lambda x: x[2], reverse=True)
 
 # 寫入 movie.txt 檔案
 with open("movie.txt", "w", encoding="utf-8") as file:
-    for title_text, tweet_num, time in sorted_data:
-        line = f"{title_text} {tweet_num} {time}\n"
+    for title_text, tweet_num, article_time in sorted_data:
+        line = f"{title_text} {tweet_num} {article_time}\n"
         file.write(line)
+
+end = time.time()
+print("執行時間: " + str(end - start))
