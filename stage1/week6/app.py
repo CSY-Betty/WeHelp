@@ -98,7 +98,7 @@ def signout():
 
 def get_message():
     with mydb.cursor() as cursor:
-        sql = "SELECT member.name, message.content FROM message RIGHT JOIN member on message.member_id = member.id"
+        sql = "SELECT member.name, message.content FROM message RIGHT JOIN member on message.member_id = member.id ORDER BY message.time DESC"
         cursor.execute(sql)
         result = cursor.fetchall()
         return result
@@ -109,7 +109,6 @@ def member():
     name = session.get("name")
     if name is not None:
         messages = get_message()
-        messages.reverse()
         return render_template("member.html", name=name, messages=messages)
     else:
         return redirect("/")
@@ -123,13 +122,24 @@ def error():
 
 @app.route("/createMessage", methods=["POST"])
 def createMessage():
-    name = session.get("name")
     member_id = session.get("member_id")
     message = request.form["message"]
 
     with mydb.cursor() as cursor:
         sql = "INSERT INTO message(member_id, content) VALUES(%s, %s)"
         cursor.execute(sql, (member_id, message))
+        mydb.commit()
+
+    return redirect("/member")
+
+
+@app.route("/deleteMessage", methods=["POST"])
+def deleteMessage():
+    message = request.form["deletemessage"]
+
+    with mydb.cursor() as cursor:
+        sql = "DELETE FROM message WHERE content = %s"
+        cursor.execute(sql, (message,))
         mydb.commit()
 
     return redirect("/member")

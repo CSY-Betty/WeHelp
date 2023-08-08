@@ -1,5 +1,8 @@
-{% extends "base.html" %} {% block title %}會員頁面{% endblock %} {% block
-header %}歡迎光臨，這是會員頁{% endblock%} {% block article %}
+{% extends "base.html" %} {% block title %}會員頁面{% endblock %} {% block link
+%}
+<script type="text/javascript" src="./delete.js"></script>
+{% endblock %}{% block header %}歡迎光臨，這是會員頁{% endblock%} {% block
+article %}
 <article>
 	<span>{{ name }}，歡迎登入系統</span>
 	<span><a href="signout">登出系統</a></span>
@@ -12,9 +15,19 @@ header %}歡迎光臨，這是會員頁{% endblock%} {% block article %}
 		</label>
 		<input type="submit" value="送出" name="submit" />
 	</form>
-	<hr />
+</article>
+<hr />
+<article>
 	{% for member, message in messages %}
-	<span>{{ member }} : {{ message }}</span>
+	<div class="message-container">
+		<span>{{ member }} : {{ message }}</span>
+		{% if member == name %}
+		<form action="/deletemessage" method="POST" class="delete-form">
+			<input type="hidden" name="deletemessage" value="{{ message }}" />
+			<button type="submit" name="delete">X</button>
+		</form>
+		{% endif %}
+	</div>
 	{% endfor %}
 </article>
 {% endblock %}

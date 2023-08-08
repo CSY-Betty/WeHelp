@@ -62,3 +62,26 @@ input[type="submit"] {
     padding: 5px 32px;
     text-align: center;
 }
+
+button {
+    border: 1px solid;
+    color: black;
+    padding: 5px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    font-size: 14px;
+    margin: 4px 4px;
+    cursor: pointer;
+    background-color:#e7e7e7;
+    border-radius: 4px;
+  }
+
+.message-container {
+    display: flex; /* 使用 Flexbox 來實現水平排列 */
+    align-items: center; /* 垂直居中對齊內容 */
+}
+
+.message-container span {
+    margin-right: 10px; /* 設定 span 元素與按鈕之間的間距 */
+}
