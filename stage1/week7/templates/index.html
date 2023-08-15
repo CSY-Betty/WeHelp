@@ -1,0 +1,40 @@
+{% extends "base.html" %} {% block title %}首頁{% endblock %} {% block link %}
+<script type="text/javascript" src="./index.js"></script>
+{% endblock %} {% block header %} 歡迎光臨，請註冊登入系統 {% endblock %} {%
+block article %}
+<article>
+	<div class="register">
+		<span>註冊帳號</span>
+	</div>
+	<form action="/signup" method="POST" name="registerForm">
+		<label
+			>姓名
+			<input type="text" name="name" />
+		</label>
+		<label
+			>帳號
+			<input type="text" name="username" />
+		</label>
+		<label
+			>密碼
+			<input type="password" name="password" />
+		</label>
+		<input type="submit" value="註冊" name="register" />
+	</form>
+	<hr />
+	<div class="sign-title">
+		<span>登入系統</span>
+	</div>
+	<form action="/signin" method="POST" name="signinForm">
+		<label
+			>帳號
+			<input type="text" name="username" />
+		</label>
+		<label
+			>密碼
+			<input type="password" name="password" />
+		</label>
+		<input type="submit" value="登入" name="submit" />
+	</form>
+</article>
+{% endblock %}

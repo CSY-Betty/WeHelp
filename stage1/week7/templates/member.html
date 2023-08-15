@@ -1,0 +1,55 @@
+{% extends "base.html" %} {% block title %}會員頁面{% endblock %} {% block link
+%}
+<script type="text/javascript" src="./member.js"></script>
+{% endblock %}{% block header %}歡迎光臨，這是會員頁{% endblock%} {% block
+article %}
+<article>
+	<span id="defaultname">{{ name }}，歡迎登入系統</span>
+	<span><a href="signout">登出系統</a></span>
+	<hr />
+	<section>
+		<span>查詢會員姓名</span>
+		<input type="text" id="usernameInput" />
+		<input type="submit" value="查詢" id="usernameSubmit" />
+		<span id="searchResult"></span>
+	</section>
+	<hr />
+	<section>
+		<span>更新我的姓名</span>
+		<input type="text" id="newname" />
+		<input type="submit" value="更新" id="newnameSubmit" />
+		<span id="newnamechange"></span>
+	</section>
+	<hr />
+</article>
+<article>
+	<section>
+		<span>快來留言吧</span>
+		<form action="/createMessage" method="POST" name="createMessage">
+			<label
+				>內容
+				<input type="text" name="message" />
+			</label>
+			<input type="submit" value="送出" name="submit" />
+		</form>
+	</section>
+	<hr />
+	<section>
+		{% for member, message in messages %}
+		<div class="message-container">
+			<span>{{ member }} : {{ message }}</span>
+			{% if member == name %}
+			<form action="/deletemessage" method="POST" class="delete-form">
+				<input
+					type="hidden"
+					name="deletemessage"
+					value="{{ message }}"
+				/>
+				<button type="submit" name="delete">X</button>
+			</form>
+			{% endif %}
+		</div>
+		{% endfor %}
+	</section>
+</article>
+{% endblock %}
