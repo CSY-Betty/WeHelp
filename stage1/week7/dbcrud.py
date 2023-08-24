@@ -5,6 +5,18 @@ mydb = mysql.connector.connect(
     host="localhost", user="root", password="root123", database="website"
 )
 
+# connect to sql by pool
+pool = mysql.connector.pooling.MySQLConnectionPool(
+    pool_name="mypool",
+    pool_size=3,
+    host="localhost",
+    user="root",
+    password="root123",
+    database="website",
+)
+
+connection = pool.get_connection()
+
 
 def excute_sql_one(sql, *args):
     with mydb.cursor() as cursor:
